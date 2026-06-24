@@ -5,4 +5,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - run: echo Hello world !
+      - uses: actions/checkout@v4
+      - run:
+         echo 123 > test.txt
+         git config --global user.email "test@dyma.fr"
+         git config --global user.name "FROM CI"
+         git add test.txt
+         git commit -m "test"
+         git push origin main
