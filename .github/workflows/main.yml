@@ -1,9 +1,5 @@
 name: Mon premier workflow
 on: push
-defaults:
-  run:
-    shell: bash
-    working-directory: ./vite-project
 
 jobs:
   build:
@@ -13,5 +9,11 @@ jobs:
         uses: actions/setup-node@v4
       - name: fetch repository
         uses: actions/checkout@v4
+      - name: configure cache
+        uses: actions/cache@v3
+        with:
+         key: ${{ runner.os }}-${{ hashFiles('./vite-project/package-lock.json') }}
+         path: ./vite-project/.nmp
       - name: install dependencies
-        run: npm install
+        run: npm ci --cache .npm
+        working-directory: ./vite-project
