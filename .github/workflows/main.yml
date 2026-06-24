@@ -4,13 +4,5 @@ on: push
 jobs:
   build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        os: [ubuntu-latest, windows-latest]
-        include:
-          - cloud: ovh
-            endpoint: url1
-            os: ubuntu-latest
-          
     steps:
-      - run: echo ${{ matrix.cloud }} ${{ matrix.endpoint }} ${{ matrix.os }}
+      - run: echo Hello world !
