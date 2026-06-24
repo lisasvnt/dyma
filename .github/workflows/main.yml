@@ -1,17 +1,11 @@
 name: Mon premier workflow
-on:
- push:
-  # branches:
-  #  - main
-  #  - feature
-  # 
-  paths:
-   - '**.png'
-  paths-ignore:
-    - 'doc/**'
+on: push
 
 jobs:
  build:
   runs-on: ubuntu-latest
   steps:
-   - run: echo traitement image
+   - run: |
+      echo ::notice:: Un message info
+      echo ::warning:: Un warning
+      echo ::error:: Une erreur
