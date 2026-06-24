@@ -4,17 +4,9 @@ on: push
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        vers: [12, 13, 14]
     steps:
-      - name: install nodejs
-        uses: actions/setup-node@v4
-      - name: fetch repository
-        uses: actions/checkout@v4
-      - name: configure cache
-        uses: actions/cache@v3
-        with:
-         key: ${{ runner.os }}-${{ hashFiles('./vite-project/package-lock.json') }}
-         path: ./vite-project/.nmp
-      - run: ls -la ./vite-project/.npm
-      # - name: install dependencies
-      #   run: npm ci --cache .npm --prefer-offline
-      #   working-directory: ./vite-project
+      - run: echo ${{ matrix.os }} ${{ matrix.vers }}
