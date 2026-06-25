@@ -2,11 +2,11 @@ name: Mon premier workflow
 on: push
 
 jobs:
-  build:
+  deploy-production:
     runs-on: ubuntu-latest
-    concurrency: waitforme
+    environment: 
+      name: production
+      url: https://test.fr
     steps:
      - run: |
-        echo Very long step
-        sleep 100
-        echo Done !
+        echo Deploy to production
